@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Recipes</h1>
+<div class="row">
+  <% @recipes.each do |recipe| %>
+  <div class="col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h2><%= link_to recipe.title, recipe %></h2>
+      </div>
+      <div class="panel-body">
+        <%= image_tag recipe.avatar.url(:thumb) %>
+  
+      
+        <h4>
+          <% recipe.rating.times do%>
+          <span class="glyphicon glyphicon-star"></span>
+          <% end %>
+        </h4>
+      </div>
+    </div>
+   
+  </div>
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to 'New Recipe', new_recipe_path %>
