@@ -1,20 +1,23 @@
-<p id="notice"><%= notice %></p>
+<!-- <p id="notice"><%= notice %></p> -->
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <div>
-    
-      <h1><%= @recipe.title %></h1>
+    <div class="well heading">
+      <div>
+
+        <h1><%= @recipe.title %></h1>
+      </div>
+
+      <%= image_tag @recipe.avatar.url(:thumb) %>
+      <p>
+        <strong>Rating:</strong>
+          <% @recipe.rating.times do%>
+            <span class="glyphicon glyphicon-star"></span>
+          <% end %>
+      </p>
+
     </div>
-    
-    <%= image_tag @recipe.avatar.url(:thumb) %>
-    <p>
-      <strong>Rating:</strong>
-        <% @recipe.rating.times do%>
-          <span class="glyphicon glyphicon-star"></span>
-        <% end %>
-    </p>
-    
-    
+
+
     <div class="text-left panel panel-default">
       <div class="panel-heading">
         <h3>Instructions:</h3>
@@ -37,10 +40,10 @@
         <% end %>
       </div>
     </div>
-    
-    
-    
-    
+
+
+
+
     <div class="text-left panel panel-default">
       <div class="panel-heading">
         <h3>Comments</h3>
@@ -49,13 +52,13 @@
         <% @recipe.comments.each do |comment| %>
           <p><%= comment.content %><p>
         <% end %>
-      
+
         <%= render 'comments/form' %>
       </div>
     </div>
   </div>
 </div>
 <% if current_user == @recipe.user %>
-  <%= link_to 'Edit', edit_recipe_path(@recipe) %> |
-  <%= link_to 'Back', recipes_path %>
+  <%= link_to 'Edit', edit_recipe_path(@recipe), class: "btn btn-primary" %>
+  <%= link_to 'Back', recipes_path, class: "btn btn-primary"%>
 <% end %>

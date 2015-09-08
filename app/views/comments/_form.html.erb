@@ -1,6 +1,6 @@
 <%= form_for(@comment) do |f| %>
   <% if @comment.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
 
       <ul>
@@ -15,7 +15,7 @@
     <%= f.text_field :user_id, value: current_user.id %>
     <%= f.text_field :recipe_id, value: @recipe.id %>
   </div>
-  
+
   <div class="field form-group">
     <%= f.label :content, class: "sr-only" %><br>
     <%= f.text_area :content, class: "form-control", placeholder: "Content" %>

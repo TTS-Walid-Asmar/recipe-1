@@ -1,6 +1,6 @@
 <%= form_for(@ingredient) do |f| %>
   <% if @ingredient.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(@ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
 
       <ul>
@@ -15,16 +15,16 @@
     <%= f.label :name, class: "sr-only" %><br>
     <%= f.text_field :name, placeholder: "Name", class: "form-control" %>
   </div>
-  
+
    <div class="field form-group">
     <%= f.label "Photo" %><br>
     <%= f.file_field :avatar %>
   </div>
-  
+
     <div class="cant-see-me">
       <%= f.number_field :recipe_id, value: @recipe.id %>
     </div>
-  
+
   <div class="actions">
     <%= f.submit class: "btn btn-primary" %>
   </div>

@@ -31,7 +31,7 @@ class IngredientsController < ApplicationController
         format.html { redirect_to recipe_path(id: @ingredient.recipe_id), notice: 'Ingredient was successfully created.' }
         format.json { render :show, status: :created, location: @ingredient }
       else
-        format.html { render :new }
+        format.html { redirect_to recipe_path(id: @ingredient.recipe_id) }
         format.json { render json: @ingredient.errors, status: :unprocessable_entity }
       end
     end
